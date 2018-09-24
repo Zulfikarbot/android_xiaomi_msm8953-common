@@ -26,14 +26,14 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
     Settings \
     SettingsProvider \
     SystemUI \
-    framework-res \
+    framework-res
 
 # Screen density
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Boot animation
-TARGET_SCREEN_HEIGHT := 1920
+TARGET_SCREEN_HEIGHT := 2160
 TARGET_SCREEN_WIDTH := 1080
 
 # Permissions
@@ -43,6 +43,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.front.xml \
+    frameworks/native/data/etc/android.hardware.camera.full.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.full.xml \
+    frameworks/native/data/etc/android.hardware.camera.raw.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.raw.xml \
     frameworks/native/data/etc/android.hardware.consumerir.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.consumerir.xml \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.location.gps.xml \
@@ -120,17 +122,17 @@ PRODUCT_PACKAGES += \
     camera.device@3.2-impl \
     camera.msm8953 \
     libmm-qcamera \
+    Camera2 \
     vendor.qti.hardware.camera.device@1.0 \
     vendor.qti.hardware.camera.device@1.0_vendor
-    
-ifneq ($(TARGET_DEVICE),tissot)    
-PRODUCT_PACKAGES += \
-    Snap 
-endif   
 
 # Configstore
 PRODUCT_PACKAGES += \
     android.hardware.configstore@1.0-service
+
+# Doze mode
+PRODUCT_PACKAGES += \
+    XiaomiDoze
 
 # Display
 PRODUCT_PACKAGES += \
@@ -152,10 +154,6 @@ PRODUCT_PACKAGES += \
     libtinyxml \
     vendor.display.config@1.0 \
     vendor.display.config@1.0_vendor
-
-# Doze mode
-PRODUCT_PACKAGES += \
-    XiaomiDoze
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -319,7 +317,7 @@ PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-service
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf \
+    $(LOCAL_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
 
 # TextClassifier smart selection model files
 PRODUCT_PACKAGES += \
