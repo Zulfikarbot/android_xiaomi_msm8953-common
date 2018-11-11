@@ -1,5 +1,4 @@
 #! /vendor/bin/sh
-
 # Copyright (c) 2009-2016, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -383,8 +382,3 @@ case "$buildvariant" in
         echo "4 4 1 4" > /proc/sys/kernel/printk
         ;;
 esac
-
-if [ -f /data/system/users/0/settings_global.xml ]; then
-    sed -i 's/"multi_sim_data_call" value="1"/"multi_sim_data_call" value="-1"/g' /data/system/users/0/settings_global.xml
-    restorecon /data/system/users/0/settings_global.xml
-fi
